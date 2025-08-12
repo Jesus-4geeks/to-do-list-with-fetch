@@ -90,9 +90,8 @@ const ToDoList = () => {
 
 			/* Si no existe el usuario, se crea y se vuelve a intentar el GET */
 			if (response.status === 404) {
-				postUser();
-				getTodos();
-				return;
+				await postUser();
+				return await getTodos();
 			}
 
 			if (!(response.ok && contentType && contentType.includes("application/json"))) {
